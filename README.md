@@ -1,3 +1,5 @@
+##### Color Transformation
+
 ###### 1.2.1 RGB color-space  vs HLS color-space
 
 Images where loaded in RGB color-space. Inspired on [this document](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html) I decided to check what happens if I apply _(Red,Green,Blue,Yellow_ and _White)_ __masks__ in **RGB color-space** and comparing them with _(Yellow,white)_ in **HSL color-space**.
@@ -25,9 +27,10 @@ For white color:
 ###### 1.2.2 Grayscale representation
 
 Images were transformed to gray-scale using cv2.cvtColor() function.
+
 ![alt text][imagec]("solidYellowCurve.jpg in gray scale representation")
 
-
+###### 1.2.3 Grayscale representation
 
 
 ---
