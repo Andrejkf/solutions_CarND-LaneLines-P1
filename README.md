@@ -44,10 +44,10 @@ First off, on this project you will find the following folders:
 
 * test_videos_output-hough-transform: output videos with parameters on _hough transform_(threshold=1, min_line_len= 1, max_line_gap= 10)  before averaging lines (that is , before modifiying the provided _draw_lines()_ helper function. **problem/opportunity in here:** When averaging possible predicted lines (with function _draw_lines2()_ , that is my modification for the function _draw_lines()_ there is numerical inestability present on the returned values , co for the rest of the exercise I used as parameter for the _hough transform_(threshold=10, min_line_len= 10, max_line_gap= 5) 
 
-* **test_videos_output: output videos as solution proposed for this project.** **problem/opportunity in here:** output averaged lines are very noisy/wavy/oscilatory during the road. 
+* **test_videos_output: output videos as solution proposed for this project.** **problem/opportunity in here:** output averaged lines are very noisy/wavy/oscilatory during the road. basically I had noticed that **noise in lines** vary depending on the _color-space representation_, _noisy/non-smoothy borders after canny transform_ and  _parameters on hough-transformation_ mainly.
 
 
-test_videos_output ( output videos with parameters changed to avoid INF values on the return of draw_lines 2_ ** problem and opportunity to improve :: noisy /wavy/ oscillationg lines 
+
 
 
 
