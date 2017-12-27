@@ -1,5 +1,3 @@
-#### solutions_CarND-LaneLines-P1
-
 # **Finding Lane Lines on the Road** 
 
 This is the project one for term one. The main goal is to be able to **detect/draw road lines** in a set of test provided incoming images and videos(sequential set of images).
@@ -27,11 +25,11 @@ This is a non exclusive list of openCV functions I used:
 
 ---
 
-### Reflection
+## Reflection
 
-#### 1. Project Description. Describe your pipeline.
+### 1. Project Description.
 
-First off, on this project you will find the following folders:
+##### 1.1. First off, on this project you will find the following folders:
 
 * examples: Provided as part of project files.
 * test_images: Provided as part of project files.
@@ -47,35 +45,15 @@ First off, on this project you will find the following folders:
 * **test_videos_output: output videos as solution proposed for this project.** **problem/opportunity in here:** output averaged lines are very noisy/wavy/oscilatory during the road. basically I had noticed that **noise in lines** vary depending on the _color-space representation_, _noisy/non-smoothy borders after canny transform_ and  _parameters on hough-transformation_ mainly.
 
 
+##### 1.2. Pipeline description
+
+My pipeline consist of 4 big steps ([Color Transformation](https://physics.info/color/),[Canny Edge detection](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjA-PXnnZ7YAhVBUd8KHcCSAIkQFggqMAA&url=http%3A%2F%2Fieeexplore.ieee.org%2Fdocument%2F4767851%2F&usg=AOvVaw0W14eP78FE6nl2CmMnqDtZ), [ROI ( Region Of Interest) selection](https://docs.opencv.org/3.3.0/d3/df2/tutorial_py_basic_ops.html), [Hough line Transform](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html)) that where splited out into **9 sub_steps:**
+
+###### 1.2.1 RGB color-space  vs HLS color-space
+
+Images where loaded in RGB color-space. Inspired on [this document](http://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_colorspaces/py_colorspaces.html) I decided to check what happens if I apply _(Red,Green,Blue,Yellow_ and _White)_ __masks__ in **RGB color-space** and comparing them with _(Yellow,white)_ in **HSL color-space**.
+
+[image2]: ./step_by_step_images/a_rgb-mask/5.png "Grayscale"
 
 
 
-
-
-
-
-
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
-
-
-### 2. Identify potential shortcomings with your current pipeline
-
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
-
-### 3. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
