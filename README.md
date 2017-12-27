@@ -28,7 +28,7 @@ For white color:
 
 Images were transformed to gray-scale using cv2.cvtColor() function.
 
-![alt text][imagec]("solidYellowCurve.jpg in gray scale representation")
+![alt text][imagea]("solidYellowCurve.jpg in gray scale")
 
 ###### 1.2.3 Grayscale representation
 
@@ -39,7 +39,7 @@ Images were transformed to gray-scale using cv2.cvtColor() function.
 [imagea]: ./step_by_step_images/a_rgb-mask/5.png "solidYellowCurve.jpg in RGB-space"
 [imageb]: ./step_by_step_images/b_hls-mask/5.png "solidYellowCurve.jpg in HLS-space"
 
-[imagec]: ./step_by_step_images/c_gray-scale/5.png "solidYellowCurve.jpg in HLS-space"
+[imagec]: ./step_by_step_images/c_gray-scale/5.png "ssolidYellowCurve.jpg in gray scale"
 [imaged]: ./step_by_step_images/d_gaussian-blur/5.png "solidYellowCurve.jpg in HLS-space"
 [imagee]: ./step_by_step_images/e_canny/5.png "solidYellowCurve.jpg in HLS-space"
 [imagef]: ./step_by_step_images/f_dilate-erode/5.png "solidYellowCurve.jpg in HLS-space"
