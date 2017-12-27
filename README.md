@@ -21,13 +21,6 @@ This is a non exclusive list of openCV functions I used:
 * [cv2.addWeighted()](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_core/py_image_arithmetics/py_image_arithmetics.html). Used for image blending.
 
 
-**Finding Lane Lines on the Road**
-
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
-
 [//]: # (Image References)
 
 [image1]: ./examples/grayscale.jpg "Grayscale"
@@ -35,6 +28,32 @@ The goals / steps of this project are the following:
 ---
 
 ### Reflection
+
+#### 1. Project Description. Describe your pipeline.
+
+First off, on this project you will find the following folders:
+
+* examples: Provided as part of project files.
+* test_images: Provided as part of project files.
+* test_videos: Provided as part of project files.
+
+* step_by_step_images: In here you can follow up the step by step process on each test image.
+* **test_images_output: final output images with detected lines.**
+
+* test_videos_output _RGB_filter: output videos when apying RBG mask/filtering. **problem/opportunity in here:** On this one is easy to observe that predicted lines are very far away from the road in certain frames.
+
+* test_videos_output-hough-transform: output videos with parameters on _hough transform_(threshold=1, min_line_len= 1, max_line_gap= 10)  before averaging lines (that is , before modifiying the provided _draw_lines()_ helper function. **problem/opportunity in here:** When averaging possible predicted lines (with function _draw_lines2()_ , that is my modification for the function _draw_lines()_ there is numerical inestability present on the returned values , co for the rest of the exercise I used as parameter for the _hough transform_(threshold=10, min_line_len= 10, max_line_gap= 5) 
+
+* **test_videos_output: output videos as solution proposed for this project.** **problem/opportunity in here:** output averaged lines are very noisy/wavy/oscilatory during the road. 
+
+
+test_videos_output ( output videos with parameters changed to avoid INF values on the return of draw_lines 2_ ** problem and opportunity to improve :: noisy /wavy/ oscillationg lines 
+
+
+
+
+
+
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
