@@ -14,3 +14,4 @@ Images where loaded in RGB color-space. Inspired on [this document](http://openc
 
 
 
+[a relative link](other_file.md)
