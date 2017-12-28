@@ -63,11 +63,77 @@ In order to reduce lines detection problem complexity, a focus region was introd
 
 ** Note2:** region vertices position calibration was done by _trial-error_. So, there should be an algorith to recalibrate those points while car is on the road, and the points here presented should be interpreted as _points-localization initialization_.
 
+###### 1.2.5.b. Image mask-out
+
+Region of interest selection was applied on preprocesed image by **blacking-out** positions _out of selected shape_. For this, cv2.fillPoly() function was used.
+
+[imageg]: ./step_by_step_images/g_region-mask/5.png "solidYellowCurve.jpg region to be focused"
 
 
+##### Hough Transform
+
+Once image is preprocessed and the region of interest is selected, **hough transform** is applied to find a set of posible detected lines that afterwards will be narrow down/average out.
+
+###### 1.2.6 Compute Hough transform
+
+In here v2.HoughLinesP() function was used.
+**Note:** Hough transform parameters are very important in order to have good lines representation. In my case, Initially I had pseudo random parameter that gave me very noise predicted lines. But after tunning parameters, the best combinations I found was:
+
+* (threshold=1, min_line_len= 1, max_line_gap= 10).
+
+However, when afterwards when I averaged the predicted lines I had numerical inestability (so, **I need to improve my proposal to average out noise predicted lines**) and finally I used the following _hough transform_ parameter combination for the videos:
+
+* (threshold=10, min_line_len= 10, max_line_gap= 5) 
+
+With that setup predicted lines were still oscilatory/wavy/noisy.
+
+[imageh]: ./step_by_step_images/h_hough-transform/5.png "solidYellowCurve.jpg Hough-lines transform"
+
+So, the _set of possible lines_ on the road looks as follows:
+
+[imagei]: ./step_by_step_images/i_lines-on-road/5.png "solidYellowCurve.jpg with hough lines on the road"
 
 
+##### connect/average/extrapolate output lines
 
+This was the most challenging part for me because I had to modify the custom function **_draw_lines2()_** which is returning me back np.NaN values when I used this parameters set up in the hough transform: (threshold=1, min_line_len= 1, max_line_gap= 10). **This is an opportunity and space to improve my solution proposed.**
+
+Here:
+
+* Aproximated _left_ and _rigth_ linear functions are maped-back to the image space. 
+* A helper function to return _averaged left-rigth lines_ as an array is defined.
+* The provided helper function *weigthed_img* is used to aply trasnsparency to the predicted lines.
+* Finally, predicted lines are painted over a copy of the original image.
+
+
+###### 1.2.7 Get image pixels for averaged lines
+
+On this subsection, output _predicted road lines_ are averaged out so than _a single representative line_ as output lane line is shown, one for the left side and one for the right side.
+
+So, function **draw_lines** used in the hough transformation step was **modified and renamed as _draw_lines2()_** and can be seen 
+in the IpythoNotebook with filename: _p1-solution-without-parameter-tunning.ipynb_
+
+**Note:** on modified fuction **_draw_lines2()_** two variables are the important ones (**lineL, lineR**). The other variables where used to debug possible np.Nan returned values or empty list values.
+
+[imagej]: ./step_by_step_images/j_aproximated-lines-on-road/5.png "solidYellowCurve.jpg with averaged predicted lines"
+
+###### 1.2.8 Include the option to get _weighted predicted lines/trasparency in lines_
+
+In this part, cv2.addWeighted() was used. with parameters:
+
+* alpha=0.7
+* betha=0.5
+* color=[255, 0, 0] = Red
+* thickness=10 = Predicted plotted line width.
+
+###### 1.2.9. Predicted lines painted over original image
+
+Custom function _lines_on_image()_  was defined to plot predicted trasparent lines over original test images. _lines_on_image()_ function can be seen in the IpythoNotebook with filename: _p1-solution-without-parameter-tunning.ipynb_. Below we can se how the final output looked like:
+
+[imagek]: ./step_by_step_images/k_aproximated-lines-on-road-transparency/5.png "solidYellowCurve.jpg with averaged transparent lines"
+
+---
+### 2. Identify potential shortcomings with your current pipeline
 
 
 
