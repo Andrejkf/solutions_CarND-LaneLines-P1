@@ -25,6 +25,13 @@ This is a non exclusive list of openCV functions I used:
 
 ## Reflection
 
+**Disclaimer!**: To make easier to follow up this reading I used just one image on this readme file, however, you can find all step_by_step process images on the folder **step_by_step_images**.
+
+* Output images for this project can be found in folder **test_images_output** and output videos in folder **test_videos_output**. 
+
+* There are two Ipython Notebook files. One before fine parameters tuning _p1-solution-without-parameter-tunning.ipynb_ and other one with fine parameter tuning included **p1-solution-parameter-tunning.ipynb**. you may want to check out the seccond one (**p1-solution-parameter-tunning.ipynb**).
+
+
 ### 1. Project Description.
 
 ##### 1.1. First off, on this project you will find the following folders:
@@ -44,12 +51,6 @@ This is a non exclusive list of openCV functions I used:
 
 
 ##### 1.2. Pipeline description
-
-**Disclaimer!**: To make easier to follow up this reading I used just one image on this readme file, however, you can find all step_by_step process images on the folder **step_by_step_images**.
-
-* Output images for this project can be found in folder **test_images_output** and output videos in folder **test_videos_output**. 
-
-* There are two Ipython Notebook files. One before fine parameters tuning _p1-solution-without-parameter-tunning.ipynb_ and other one with fine parameter tuning included **p1-solution-parameter-tunning.ipynb**. you may want to check out the seccond one (**p1-solution-parameter-tunning.ipynb**).
 
 My pipeline consist of 4 big steps ([Color Transformation](https://physics.info/color/),[Canny Edge detection](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjA-PXnnZ7YAhVBUd8KHcCSAIkQFggqMAA&url=http%3A%2F%2Fieeexplore.ieee.org%2Fdocument%2F4767851%2F&usg=AOvVaw0W14eP78FE6nl2CmMnqDtZ), [ROI ( Region Of Interest) selection](https://docs.opencv.org/3.3.0/d3/df2/tutorial_py_basic_ops.html), [Hough line Transform](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_houghlines/py_houghlines.html)) that where splited out into **9 sub_steps:**
 
