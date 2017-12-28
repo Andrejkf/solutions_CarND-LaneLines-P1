@@ -28,12 +28,14 @@ For white color:
 
 Before appying _canny algorithm_ images are mapped to _gray-scale_ representation. Images were transformed to gray-scale using cv2.cvtColor() function.
 
-![alt text][imagea]("solidYellowCurve.jpg in gray scale")
+![alt text][imagec]("solidYellowCurve.jpg in gray scale")
+
 
 ###### 1.2.3 Grayscale representation
 To avoid noise edge detection image is smoothed so that gradients (pixel intensity variations) can be detected easier. For that [cv2.GaussianBlur()](https://docs.opencv.org/3.0-beta/modules/imgproc/doc/filtering.html) was used. I used kernel size = filter size = 15.
 
-[imaged]: ./step_by_step_images/d_gaussian-blur/5.png "solidYellowCurve.jpg in gaussian-blur"
+![alt text][imaged]("solidYellowCurve.jpg in gaussian-blur")
+
 
 ##### Borders detection
 Acording to documentation [cv2.Canny()](https://docs.opencv.org/3.1.0/da/d22/tutorial_py_canny.html), lower and upper threshold for border detection must be adjusted. However, is recommended in [here](https://docs.opencv.org/2.4/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html) to use a _upper:lower_ ratio between **2:1** and **3:1**.
@@ -45,13 +47,16 @@ Following values were selected:
 
 ###### 1.2.4.a. Edge detection
 To detect borders cv2.Canny() function was used.
-[imagee]: ./step_by_step_images/e_canny/5.png "solidYellowCurve.jpg after canny edge detection"
+
+![alt text][imagee]("solidYellowCurve.jpg after canny edge detection")
+
 
 ###### 1.2.4.b. Morphological Transformations
 
 After aplying canny edge detection. Noticed there are non continuous lines at the edge of _left-right_ road lines regions. So to reduce noise in the averaged _left-line region_ and _rigth-line region_, than is , to close up open regions [dilatation followed by erosion](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html#dilation) was applied. For this, cv2.dilate() and cv2.erode() functions were used.
 
-[imagef]: ./step_by_step_images/f_dilate-erode/5.png "solidYellowCurve.jpg after dilation and erosion"
+![alt text][imagef]("solidYellowCurve.jpg after dilation and erosion")
+
 
 ##### Region Of Interest (ROI) selection
 
@@ -67,7 +72,8 @@ In order to reduce lines detection problem complexity, a focus region was introd
 
 Region of interest selection was applied on preprocesed image by **blacking-out** positions _out of selected shape_. For this, cv2.fillPoly() function was used.
 
-[imageg]: ./step_by_step_images/g_region-mask/5.png "solidYellowCurve.jpg region to be focused"
+![alt text][imageg]("solidYellowCurve.jpg region to be focused")
+
 
 
 ##### Hough Transform
@@ -87,11 +93,13 @@ However, when afterwards when I averaged the predicted lines I had numerical ine
 
 With that setup predicted lines were still oscilatory/wavy/noisy.
 
-[imageh]: ./step_by_step_images/h_hough-transform/5.png "solidYellowCurve.jpg Hough-lines transform"
+![alt text][imageh]("solidYellowCurve.jpg Hough-lines transform")
+
 
 So, the _set of possible lines_ on the road looks as follows:
 
-[imagei]: ./step_by_step_images/i_lines-on-road/5.png "solidYellowCurve.jpg with hough lines on the road"
+![alt text][imagei]("solidYellowCurve.jpg with hough lines on the road")
+
 
 
 ##### connect/average/extrapolate output lines
@@ -115,7 +123,9 @@ in the IpythoNotebook with filename: _p1-solution-without-parameter-tunning.ipyn
 
 **Note:** on modified fuction **_draw_lines2()_** two variables are the important ones (**lineL, lineR**). The other variables where used to debug possible np.Nan returned values or empty list values.
 
-[imagej]: ./step_by_step_images/j_aproximated-lines-on-road/5.png "solidYellowCurve.jpg with averaged predicted lines"
+
+![alt text][imagej]("solidYellowCurve.jpg with averaged predicted lines")
+
 
 ###### 1.2.8 Include the option to get _weighted predicted lines/trasparency in lines_
 
@@ -130,7 +140,8 @@ In this part, cv2.addWeighted() was used. with parameters:
 
 Custom function _lines_on_image()_  was defined to plot predicted trasparent lines over original test images. _lines_on_image()_ function can be seen in the IpythoNotebook with filename: _p1-solution-without-parameter-tunning.ipynb_. Below we can se how the final output looked like:
 
-[imagek]: ./step_by_step_images/k_aproximated-lines-on-road-transparency/5.png "solidYellowCurve.jpg with averaged transparent lines"
+![alt text][imagek]("solidYellowCurve.jpg with averaged transparent lines")
+
 
 ---
 ### 2. Identify potential shortcomings with your current pipeline
@@ -145,7 +156,7 @@ Custom function _lines_on_image()_  was defined to plot predicted trasparent lin
 
 [imageb]: ./step_by_step_images/b_hls-mask/5.png "solidYellowCurve.jpg in HLS-space"
 
-[imagec]: ./step_by_step_images/c_gray-scale/5.png "ssolidYellowCurve.jpg in gray scale"
+[imagec]: ./step_by_step_images/c_gray-scale/5.png "solidYellowCurve.jpg in gray scale"
 
 [imaged]: ./step_by_step_images/d_gaussian-blur/5.png "solidYellowCurve.jpg in gaussian-blur"
 
