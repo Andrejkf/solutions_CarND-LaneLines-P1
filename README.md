@@ -146,7 +146,18 @@ Custom function _lines_on_image()_  was defined to plot predicted trasparent lin
 ---
 ### 2. Identify potential shortcomings with your current pipeline
 
+* About **color space transformation**. HLS yellow-white mask _paraeters_ need further tuning to be less sensitive to higly variable  bright/light conditions.
+* About **boders detection**. IN the Canny algorithm parameters values also need to be adjusted to filter out spurious borders (undesired borders detection).
+* About **region of interest (ROI) selection**. If the polygon base (trapecium base) is too wide or if the polygon heigh( trapecium heigh) is more than 0.6* Image_heigh, then many noise lines on the hough trasform are received and the slope for the predicted averaged line will change dramatically.
+* About **Hough transform**. This is the part were the solution was returning np.Nan values whith parameters (threshold < 5 and min_line_len < 8 and max_line_gap < 15) whn using the modified _draw_lines2()_ function to get the _averaged predicted line_. And more specifically in the values for the predicted rigth line or when testing on the video challenge.mp4. And this phenomena happens for high changes in bright/light images and small changes when computiong the gradients on edge detection. For that reason, further image processing or data processing need to be done to make the output predicted lines somoother.
 
+
+
+
+
+Also, when using the functions cv2.dilate() and  cv2.erode(), different kernel sizes and number of iterations in hte cross correlation might be checked out.
+
+Different polygons regions should be tested. Also Al algorithm to tune the vertices localization in the images would be better when implementing code on real scenario, for example Q-learning.
 
 
 ---
